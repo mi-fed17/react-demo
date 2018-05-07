@@ -12,26 +12,41 @@ class App extends React.Component {
 
   // ES7 syntax to create the state variable
   state = {
-    name: "Hello"
+    name: "Hello",
+    counter : 0
   }
 
   // My own function needs to be in the form of an arrow function
-  changeState = () => {
+  changeState = (newValue) => {
+    console.log(newValue);
     /** 
      * Built in function, takes an object as argument,
      * state should always be changed via this.setState()
      */
-    this.setState({ name: "Steffe" });
+    this.setState(
+      { 
+        // this.state.counter = this.state.counter + 1
+        counter: this.state.counter + 1
+      }
+    );
   }
 
   // Reacts built in function, doesn't need to be an arrow function
   render() {
+    // Render is called when state i changed
+    console.log(this.state.counter);
     return (
       <div>
-        <SecondHeader>
-          { /* Referencing the state variable, printing whatever value that is stored */ }
-          { this.state.name } { /* props.children*/ }
-        </SecondHeader>
+        <p>{ this.state.name }</p>
+        <p>{ this.state.counter }</p>
+        {
+          /**
+           * element.addEventListener('click', this.changeState)
+           */
+        }
+        <button onClick={() => this.changeState("New Value")}>
+          Click me!
+        </button>
       </div>
     );
   }
@@ -52,3 +67,11 @@ export default App;
 function SecondHeader(props){
   return <h1> { props.children } </h1>
 }
+
+
+
+// element.addEventLister('click', changeState);
+
+// element.addEventListener('click', () => {
+//   changeState('Hello');
+// })
