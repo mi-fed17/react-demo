@@ -2,23 +2,16 @@ import React from 'react';
 
 class App extends React.Component {
 
-  // This is the same as below, this will also create a state variable
-  // constructor(){
-  //   super();
-  //   this.state = {
-  //     name: "Steffe"
-  //   }
-  // }
-
   // ES7 syntax to create the state variable
   state = {
     name: "Hello",
-    counter : 0
+    counter : 0,
+    inputValue: ''
   }
 
   // My own function needs to be in the form of an arrow function
-  changeState = (newValue) => {
-    console.log(newValue);
+  changeState = (event) => {
+    console.log(event.target);
     /** 
      * Built in function, takes an object as argument,
      * state should always be changed via this.setState()
@@ -31,22 +24,37 @@ class App extends React.Component {
     );
   }
 
+  // Every event listener knows about its own event
+  changeInput = (event) => {
+    console.log(event.target.value);
+    /* This will change a slice of the state */
+    this.setState({ inputValue: event.target.value })
+
+  }
+
   // Reacts built in function, doesn't need to be an arrow function
   render() {
-    // Render is called when state i changed
-    console.log(this.state.counter);
+    // Render is called when state is changed
     return (
       <div>
         <p>{ this.state.name }</p>
         <p>{ this.state.counter }</p>
+        <p>{ this.state.inputValue }</p>
         {
           /**
            * element.addEventListener('click', this.changeState)
            */
         }
-        <button onClick={() => this.changeState("New Value")}>
+        <button onClick={this.changeState}>
           Click me!
         </button>
+        { /* The value of the input will be stored in state */}
+        <input 
+          value={this.state.inputValue}
+          type="text"
+          onChange={this.changeInput} />
+
+        <Header greeting={this.state.inputValue} />
       </div>
     );
   }
@@ -54,12 +62,12 @@ class App extends React.Component {
 
 export default App;
 
-// function Header(props) {
-//   if(props.size === 1 ){
-//     return <h1> { props.greeting } </h1>;
-//   }
-//   return <h2> { props.greeting } </h2>;
-// }
+function Header(props) {
+  if(props.size === 1 ){
+    return <h1> { props.greeting } </h1>;
+  }
+  return <h2> { props.greeting } </h2>;
+}
 
 /**
  * Props children is unique
@@ -72,6 +80,8 @@ function SecondHeader(props){
 
 // element.addEventLister('click', changeState);
 
-// element.addEventListener('click', () => {
-//   changeState('Hello');
+// element.addEventListener('click', (event) => {
+//   event.preventDefault();
+
+  
 // })
