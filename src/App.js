@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import Button from './Button';
 
 class App extends React.Component {
 
@@ -52,22 +53,11 @@ class App extends React.Component {
   // Reacts built in function, doesn't need to be an arrow function
   render() {
     // Render is called when state is changed
-    let cats = [
-      {
-        name: "misse",
-        id: 5,
-      },
-      {
-        name: "Okej",
-        id: 44,
-      }
-    ];
-
     let listOfCats = [];
 
     for(const cat of this.state.cats){
       listOfCats.push(
-        <li onClick={() => this.logCat(cat.id)}> 
+        <li key={cat.id} onClick={() => this.logCat(cat.id)}> 
           {cat.name}
         </li>
       );  
@@ -99,6 +89,11 @@ class App extends React.Component {
 
         { /* State is being passed down as props */}
         <Header greeting={this.state.inputValue} />
+
+        <Button primary onClick={this.changeState} />
+        <Button secondary />
+        <Button />
+
       </div>
     );
   }
