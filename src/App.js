@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 class App extends React.Component {
@@ -6,12 +7,22 @@ class App extends React.Component {
   state = {
     name: "Hello",
     counter : 0,
-    inputValue: ''
+    inputValue: '',
+    cats: [
+      {
+        name: "misse",
+        id: 5,
+      },
+      {
+        name: "Okej",
+        id: 44,
+      }
+    ]
   }
 
   // My own function needs to be in the form of an arrow function
   changeState = (event) => {
-    console.log(event.target);
+    console.log(this.state.inputValue);
     /** 
      * Built in function, takes an object as argument,
      * state should always be changed via this.setState()
@@ -34,14 +45,39 @@ class App extends React.Component {
 
   }
 
+  logCat = (id) => {
+    console.log(id);
+  }
+
   // Reacts built in function, doesn't need to be an arrow function
   render() {
     // Render is called when state is changed
+    let cats = [
+      {
+        name: "misse",
+        id: 5,
+      },
+      {
+        name: "Okej",
+        id: 44,
+      }
+    ];
+
+    let listOfCats = [];
+
+    for(const cat of this.state.cats){
+      listOfCats.push(
+        <li onClick={() => this.logCat(cat.id)}> 
+          {cat.name}
+        </li>
+      );  
+    }
+
     return (
       <div>
-        <p>{ this.state.name }</p>
-        <p>{ this.state.counter }</p>
-        <p>{ this.state.inputValue }</p>
+        <ul>
+          { listOfCats }
+        </ul>
         {
           /**
            * element.addEventListener('click', this.changeState)
@@ -82,6 +118,6 @@ function Header(props) {
  * whatever is inside of the tag:
  * <SecondHeader> these are the children </SecondHeader>
  */
-function SecondHeader(props){
+function SecondHeader(props){ 
   return <h1> { props.children } </h1>
 }
