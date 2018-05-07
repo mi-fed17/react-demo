@@ -26,8 +26,10 @@ class App extends React.Component {
 
   // Every event listener knows about its own event
   changeInput = (event) => {
+    /* event.target === <input type="text" /> */
     console.log(event.target.value);
-    /* This will change a slice of the state */
+    /* This will change a slice of the state, grab
+     * the value of the target and put it in this.state.inputValue */
     this.setState({ inputValue: event.target.value })
 
   }
@@ -48,12 +50,18 @@ class App extends React.Component {
         <button onClick={this.changeState}>
           Click me!
         </button>
-        { /* The value of the input will be stored in state */}
+        { 
+          /* The value of the input will be stored in state,
+           * the value of the input field must be updated
+           * from the state 
+           */
+        }
         <input 
           value={this.state.inputValue}
           type="text"
           onChange={this.changeInput} />
 
+        { /* State is being passed down as props */}
         <Header greeting={this.state.inputValue} />
       </div>
     );
@@ -70,18 +78,10 @@ function Header(props) {
 }
 
 /**
- * Props children is unique
+ * Props children is unique, it is the value of 
+ * whatever is inside of the tag:
+ * <SecondHeader> these are the children </SecondHeader>
  */
 function SecondHeader(props){
   return <h1> { props.children } </h1>
 }
-
-
-
-// element.addEventLister('click', changeState);
-
-// element.addEventListener('click', (event) => {
-//   event.preventDefault();
-
-  
-// })
