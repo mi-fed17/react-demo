@@ -1,13 +1,32 @@
 import React from 'react';
 
 class App extends React.Component {
+
+  // This is the same
+  // constructor(){
+  //   super();
+  //   this.state = {
+  //     name: "Steffe"
+  //   }
+  // }
+
+  // ES7
+  state = {
+    name: "Hello"
+  }
+
+  // My own function
+  changeState = () => {
+    // Built in function, takes an object as argument
+    this.setState({ name: "Steffe" });
+  }
+
+  // Reacts function
   render() {
     return (
       <div>
-        <Header greeting="Hello" size={1} />
-
         <SecondHeader>
-          Hello { /* props.children*/ }
+          { this.state.name } { /* props.children*/ }
         </SecondHeader>
       </div>
     );
