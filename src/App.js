@@ -2,7 +2,7 @@ import React from 'react';
 
 class App extends React.Component {
 
-  // This is the same
+  // This is the same as below, this will also create a state variable
   // constructor(){
   //   super();
   //   this.state = {
@@ -10,22 +10,26 @@ class App extends React.Component {
   //   }
   // }
 
-  // ES7
+  // ES7 syntax to create the state variable
   state = {
     name: "Hello"
   }
 
-  // My own function
+  // My own function needs to be in the form of an arrow function
   changeState = () => {
-    // Built in function, takes an object as argument
+    /** 
+     * Built in function, takes an object as argument,
+     * state should always be changed via this.setState()
+     */
     this.setState({ name: "Steffe" });
   }
 
-  // Reacts function
+  // Reacts built in function, doesn't need to be an arrow function
   render() {
     return (
       <div>
         <SecondHeader>
+          { /* Referencing the state variable, printing whatever value that is stored */ }
           { this.state.name } { /* props.children*/ }
         </SecondHeader>
       </div>
@@ -35,12 +39,12 @@ class App extends React.Component {
 
 export default App;
 
-function Header(props) {
-  if(props.size === 1 ){
-    return <h1> { props.greeting } </h1>;
-  }
-  return <h2> { props.greeting } </h2>;
-}
+// function Header(props) {
+//   if(props.size === 1 ){
+//     return <h1> { props.greeting } </h1>;
+//   }
+//   return <h2> { props.greeting } </h2>;
+// }
 
 /**
  * Props children is unique
