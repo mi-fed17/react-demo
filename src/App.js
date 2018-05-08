@@ -8,6 +8,10 @@ class App extends React.Component {
   }
 
   componentDidMount(){
+    /** 
+     * When Component is "ready", call the function 
+     * that will fetch the data and store it in state
+     */
     this.fetchPlaylists();
   }
 
@@ -17,8 +21,9 @@ class App extends React.Component {
       .then((playlists) => {
         /** Key is this.state.playlist
          *  value is array fetched from API
-         *  Model.state.playlists = playlists
-         *  if key and value have the same name -> combine
+         *  App.state.playlists = playlists
+         *  if key and value variable have the same name -> combine
+         *  We do not need to output to HTML here, React will do it for us
          */
         this.setState({ playlists });
       })
@@ -30,9 +35,9 @@ class App extends React.Component {
   renderPlaylists = () => {
     return this.state.playlists.map((playlist) => {
       return (
-        <div key={playlist._id}>
+        <div key={playlist._id}> { /* key is always needed */}
           <p> {playlist.title} </p>
-          <p> {playlist.genres.join(', ')} </p>
+          <p> {playlist.genres.join(', ')} </p> { /* .join() will create a string out of the array */}
         </div>
       );
     });
@@ -40,9 +45,11 @@ class App extends React.Component {
 
   render(){ 
     return(
-      <div>
+      <section>
+        { /* this.renderPlaylists will return an array
+           * of <div> tags, React will know how to render this */ }
         { this.renderPlaylists() }
-      </div>
+      </section>
     )
   }
 }
