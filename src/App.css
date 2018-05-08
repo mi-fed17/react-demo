@@ -21,3 +21,8 @@ div:not(#root) {
 div p {
   margin: 0;
 }
+
+header {
+  width: 100vw;
+  background-color: #c02e5e;
+}

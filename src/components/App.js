@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import './App.css';
+import Playlists from './Playlists';
+import InputField from './InputField';
+import Container from './Container';
+import Header from './Header';
+import '../App.css';
 
 class App extends React.Component {
 
@@ -31,38 +35,21 @@ class App extends React.Component {
       })
   }
 
-  /**
-   * This function will return an array of <div>-elements
-   */
-  renderPlaylists = () => {
-    return this.state.playlists.map((playlist) => {
-      if(playlist.title.includes(this.state.searchTerm)){
-        return (
-          <div key={playlist._id}> { /* key is always needed */}
-            <p> {playlist.title} </p>
-            <p> {playlist.genres.join(', ')} </p> { /* .join() will create a string out of the array */}
-          </div>
-        );
-      }
-      return null;
-    });
-  }
-
   handleChange = (event) => {
     this.setState({ searchTerm: event.target.value });
   }
 
   render(){ 
     return(
-      <section>
-        <input type="text"
-               onChange={this.handleChange}
-               value={this.state.searchTerm}
+      <Container>
+        <Header />
+        <InputField handleChange={this.handleChange}
+                    searchTerm={this.state.searchTerm}
         />
-        { /* this.renderPlaylists will return an array
-           * of <div> tags, React will know how to render this */ }
-        { this.renderPlaylists() }
-      </section>
+        <Playlists playlists={this.state.playlists}
+                   searchTerm={this.state.searchTerm}
+        />
+      </Container>
     )
   }
 }
