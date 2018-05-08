@@ -18,18 +18,24 @@ class App extends React.Component {
     ]
   }
 
-  render(){
-    const list = this.state.playlists.map((playlist) => {
-      return(
-        <div key={playlist.id}> 
-          <p> { playlist.title } </p> 
-          <p> { playlist.genres.join(', ') } </p>
+  /**
+   * This function will return an array of <div>-elements
+   */
+  renderPlaylists = () => {
+    return this.state.playlists.map((playlist) => {
+      return (
+        <div key={playlist.id}>
+          <p> {playlist.title} </p>
+          <p> {playlist.genres.join(', ')} </p>
         </div>
       );
     });
+  }
+
+  render(){ 
     return(
       <div>
-        { list }
+        { this.renderPlaylists() }
       </div>
     )
   }
