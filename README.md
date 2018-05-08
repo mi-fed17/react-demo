@@ -7,7 +7,7 @@
 * Fetch data (playlists) from the API
 * Display the fetched data
 * Update state with fetched data
-* Filter state data
+* Filter state data with an input field
 
 ## Vanilla JavaScript reference
 

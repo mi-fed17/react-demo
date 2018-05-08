@@ -3,8 +3,10 @@ import React from 'react';
 import './App.css';
 
 class App extends React.Component {
+
   state = {
-    playlists: []
+    playlists: [],
+    searchTerm: ''
   }
 
   componentDidMount(){
@@ -34,18 +36,29 @@ class App extends React.Component {
    */
   renderPlaylists = () => {
     return this.state.playlists.map((playlist) => {
-      return (
-        <div key={playlist._id}> { /* key is always needed */}
-          <p> {playlist.title} </p>
-          <p> {playlist.genres.join(', ')} </p> { /* .join() will create a string out of the array */}
-        </div>
-      );
+      if(playlist.title.includes(this.state.searchTerm)){
+        return (
+          <div key={playlist._id}> { /* key is always needed */}
+            <p> {playlist.title} </p>
+            <p> {playlist.genres.join(', ')} </p> { /* .join() will create a string out of the array */}
+          </div>
+        );
+      }
+      return null;
     });
+  }
+
+  handleChange = (event) => {
+    this.setState({ searchTerm: event.target.value });
   }
 
   render(){ 
     return(
       <section>
+        <input type="text"
+               onChange={this.handleChange}
+               value={this.state.searchTerm}
+        />
         { /* this.renderPlaylists will return an array
            * of <div> tags, React will know how to render this */ }
         { this.renderPlaylists() }
