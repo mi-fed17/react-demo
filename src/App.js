@@ -4,18 +4,24 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    playlists: [
-      {
-        title: "Super hip playlist",
-        id: "567432sdf43woihhfiugsgiuraui",
-        genres: ["Hip", "Hop"]
-      },
-      {
-        title: "Chill and coffee",
-        id: "45ubsff0348374afhauirg4",
-        genres: ["Whatever", "Another Genre"]
-      }
-    ]
+    playlists: []
+  }
+
+  componentDidMount(){
+    this.fetchPlaylists();
+  }
+
+  fetchPlaylists = () => {
+    fetch('https://folksa.ga/api/playlists?key=flat_eric')
+      .then(response => response.json())
+      .then((playlists) => {
+        /** Key is this.state.playlist
+         *  value is array fetched from API
+         *  Model.state.playlists = playlists
+         *  if key and value have the same name -> combine
+         */
+        this.setState({ playlists });
+      })
   }
 
   /**
@@ -24,7 +30,7 @@ class App extends React.Component {
   renderPlaylists = () => {
     return this.state.playlists.map((playlist) => {
       return (
-        <div key={playlist.id}>
+        <div key={playlist._id}>
           <p> {playlist.title} </p>
           <p> {playlist.genres.join(', ')} </p>
         </div>
