@@ -9,7 +9,8 @@ body, html {
 }
 
 
-div:not(#root){
+div:not(#root) {
+  background-color: #c02e5e;
   border-radius: 8px;
   box-shadow: 3px 3px 0 rgba(0,0,50, 0.2);
   padding: 2rem;

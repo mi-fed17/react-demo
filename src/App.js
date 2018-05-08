@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import './App.css';
 
 class App extends React.Component {
   render(){
