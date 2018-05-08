@@ -2,6 +2,15 @@
 
 * Code from _7/5_ is on branch: **state-intro**
 
+## TODO
+
+* Fetch data (playlists) from the API
+* Display the fetched data
+* Update state with fetched data
+* Filter state data
+
+## Vanilla JavaScript reference
+
 _Vanilla JavaScript Reference_
 
 ```js
