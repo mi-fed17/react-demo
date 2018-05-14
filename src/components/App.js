@@ -6,10 +6,32 @@ import '../App.css';
 
 class App extends React.Component {
 
+  state = {
+    loggedIn: false,
+    email: ''
+  }
+
+  logout = () => {
+    this.setState({ loggedIn: false });
+  }
+
+  handleLogin = (email, password) => {
+    this.setState({ loggedIn: true, email: email });
+  }
+
   render(){
+    /** Display none / display block */
+    let loggedInMessage = null;
+    if(this.state.loggedIn){
+      loggedInMessage = <p> You are logged in! </p>
+    }
+    
     return(
       <Container>
-        <LoginForm />
+        { loggedInMessage }
+        {
+          !this.state.loggedIn && <LoginForm handleLogin={this.handleLogin} />
+        }
       </Container>
     )
   }
