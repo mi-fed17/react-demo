@@ -1,43 +1,31 @@
 # react-demo
 
 * Code from _7/5_ is on branch: **state-intro**
+* Code from _8/5_ is on branch: **fetch-example**
 
 ## TODO
 
-* Fetch data (playlists) from the API
-* Display the fetched data
-* Update state with fetched data
-* Filter state data with an input field
+* Create a Bootstrap login-form
+* Hook up some state
+* Display error message on failed login
+* Send state up to `App`
 
-## Vanilla JavaScript reference
-
-_Vanilla JavaScript Reference_
-
-```js
-const App = {
-  state: {
-    playlists: []
-  },
-  getLatest(){
-    fetch('https://folksa.ga/api/playlists?key=flat_eric')
-      .then(response => response.json())
-      .then((fetchedPlaylists) => {
-        this.state.playlists = fetchedPlaylists;
-        return fetchedPlaylists;
-      })
-      .then(this.displayLatest)
-  },
-  displayLatest(fetchedPlaylists){
-    let outputHTML = '';
-    for(const playlist of fetchedPlaylists){
-      outputHTML += `<div>
-        <p>${playlist.title}</p>
-      </div>`
-    }
-  document.body.innerHTML = outputHTML;
-  }
-}
-
-App.getLatest();
-
+_Bootstrap HTML Reference_
+```html
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 ```
