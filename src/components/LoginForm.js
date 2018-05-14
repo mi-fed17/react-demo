@@ -18,17 +18,32 @@ class LoginForm extends Component {
   }
 
   handlePassword = (event) => {
+    /**
+     * If the state password is less than 6 chars, set the error state
+     * if not, set it to empty string which will hide the message
+     */
     if (this.state.password.length < 6) {
       this.setState({ error: "Password too short" });
     } else {
       this.setState({ error: '' });
     }
+    /**
+     * But always set the password state
+     */
     this.setState({ password: event.target.value });
   }
 
   handleSubmit = (event) => {
+    /**
+     * Always prevent the form from submitting, event is always present.
+     */
     event.preventDefault();
     if(this.state.email === "user@user.se" && this.state.password === "password1234"){
+      /**
+       * This function is passed down from <App /> and will be called inside of <App />
+       * this function will not be executed inside of LoginForm, it will be executed
+       * inside of <App />
+       */
       this.props.handleLogin(this.state.email, this.state.password);
     } else {
       this.setState({ error: "Wrong email or password!" });
