@@ -16,10 +16,24 @@ class LoginForm extends Component {
     this.setState({ password: event.target.value });
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if(this.state.email === "user@user.se" && this.state.password === "password1234"){
+      this.setState({ error: 'Logged in!'});
+    } else {
+      this.setState({ error: "Wrong email or password!"});
+    }
+    
+  }
+
   render() {
-    console.log(this.state);
+    let errorMessage = null;
+    if(this.state.error){
+      errorMessage = <small id="emailHelp" className="form-text text-danger">{this.state.error}</small>;
+    }
+
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label htmlFor="email">Email address</label>
           <input 
@@ -31,7 +45,7 @@ class LoginForm extends Component {
                   onChange={this.handleEmail}
                   value={this.state.email}
           />
-            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+          { errorMessage }
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
@@ -43,6 +57,7 @@ class LoginForm extends Component {
                   onChange={this.handlePassword}
                   value={this.state.password}
           />
+          {errorMessage}
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
