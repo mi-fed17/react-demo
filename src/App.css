@@ -8,21 +8,3 @@ body, html {
   margin-top: 3rem;
   font-family: 'Operator Mono Lig', monospace;
 }
-
-
-div:not(#root) {
-  background-color: #c02e5e;
-  border-radius: 8px;
-  box-shadow: 3px 3px 0 rgba(0,0,50, 0.2);
-  padding: 2rem;
-  margin: 2rem 0;
-}
-
-div p {
-  margin: 0;
-}
-
-header {
-  width: 100vw;
-  background-color: #c02e5e;
-}
