@@ -8,10 +8,10 @@ class LoginForm extends Component {
     error: '',
   }
 
-  handleChange = (event) => {
-    /** This means that you have to have a "name"-attribute */
-    this.setState({ [event.target.name] : event.target.value })
-  }
+  // handleChange = (event) => {
+  //   /** This means that you have to have a "name"-attribute */
+  //   this.setState({ [event.target.name] : event.target.value })
+  // }
 
   handleEmail = (event) => {
     this.setState({ email: event.target.value });
