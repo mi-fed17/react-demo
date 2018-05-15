@@ -34,7 +34,6 @@ class App extends React.Component {
   render(){
     //Destructuring
     const { email, loggedIn } = this.state;
-    console.log(email);
 
     /** Display none === null / display block  */
     let loggedInMessage = null;

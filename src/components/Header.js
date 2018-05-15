@@ -1,11 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-Header.propTypes = {
-  email: PropTypes.string.isRequired,
-  logout: PropTypes.func.isRequired
-}
-
 function Header(props){
   if(props.email){
     return(
@@ -25,6 +20,11 @@ function Header(props){
       </header>
     )
   }
+}
+
+Header.propTypes = {
+  email: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired
 }
 
 export default Header;
