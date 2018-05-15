@@ -3,6 +3,7 @@ import React from 'react';
 import Container from './Container';
 import LoginForm from './LoginForm';
 import Header from './Header';
+import PlaylistView from './PlaylistView';
 import '../App.css';
 
 class App extends React.Component {
@@ -36,6 +37,11 @@ class App extends React.Component {
     if(this.state.loggedIn){
       loggedInMessage = <p> You are logged in! </p>
     }
+
+    let view = <LoginForm handleLogin={this.handleLogin} />;
+    if(this.state.loggedIn){
+      view = <PlaylistView />;
+    }
     
     return(
       <Container>
@@ -51,9 +57,13 @@ class App extends React.Component {
            * component to show.
            */
         }
-        {
+        { view }
+        {/* {
           !this.state.loggedIn && <LoginForm handleLogin={this.handleLogin} />
         }
+        {
+          this.state.loggedIn && <PlaylistView />
+        } */}
         
       </Container>
     )
