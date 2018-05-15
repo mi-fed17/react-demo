@@ -8,10 +8,10 @@ class LoginForm extends Component {
     error: '',
   }
 
-  // handleChange = (event) => {
-  //   /** This means that you have to have a "name"-attribute */
-  //   this.setState({ [event.target.name] : event.target.value })
-  // }
+  handleChange = (event) => {
+    /** This means that you have to have a "name"-attribute */
+    this.setState({ [event.target.name] : event.target.value })
+  }
 
   handleEmail = (event) => {
     this.setState({ email: event.target.value });
@@ -56,6 +56,7 @@ class LoginForm extends Component {
     if(this.state.error){
       errorMessage = <small id="emailHelp" className="form-text text-danger">{this.state.error}</small>;
     }
+
     let errorClass = 'form-group';
     if(this.state.error){
       errorClass = "form-group has-danger";
@@ -63,7 +64,9 @@ class LoginForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
+       { /** className, not class */}
         <div className={ errorClass }>
+          { /** htmlFor, not for */}
           <label htmlFor="email">Email address</label>
           <input 
                   type="email"

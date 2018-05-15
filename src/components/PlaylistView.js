@@ -41,6 +41,11 @@ class PlaylistView extends React.Component {
   render(){ 
     return(
       <Container>
+        {
+          /** Passing current state down as props with
+           *  the same name, state become props
+           */
+        }
         <InputField handleChange={this.handleChange}
                     searchTerm={this.state.searchTerm}
         />

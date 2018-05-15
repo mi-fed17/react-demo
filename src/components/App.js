@@ -2,6 +2,7 @@
 import React from 'react';
 import Container from './Container';
 import LoginForm from './LoginForm';
+import Header from './Header';
 import '../App.css';
 
 class App extends React.Component {
@@ -16,7 +17,8 @@ class App extends React.Component {
   }
 
   logout = () => {
-    this.setState({ loggedIn: false });
+    /** let loggedIn = false */
+    this.setState({ loggedIn: false, email: '' });
   }
 
   /**
@@ -37,7 +39,9 @@ class App extends React.Component {
     
     return(
       <Container>
-        { loggedInMessage }
+        <Header email={this.state.email}
+                logout={this.logout}
+        />
         {
           /**
            * This is a shorthand for displaying or hiding a component,
@@ -46,11 +50,23 @@ class App extends React.Component {
            * saying true && true or false && false. Both must be true for the
            * component to show.
            */
+        }
+        {
           !this.state.loggedIn && <LoginForm handleLogin={this.handleLogin} />
         }
+        
       </Container>
     )
   }
 }
 
 export default App;
+
+
+// if(false && true){
+//   // false
+// }
+
+// Ternary Operator
+// const value = (4 > 5) ? "If true" : "If false";
+// const value = (5 > 4) ? true : false;
