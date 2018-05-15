@@ -38,6 +38,8 @@ class App extends React.Component {
       loggedInMessage = <p> You are logged in! </p>
     }
 
+    //let loggedInMsg = this.state.loggedIn ? <p> You are logged in! </p> : null;
+
     let view = <LoginForm handleLogin={this.handleLogin} />;
     if(this.state.loggedIn){
       view = <PlaylistView />;

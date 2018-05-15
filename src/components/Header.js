@@ -13,7 +13,9 @@ function Header(props){
   } else {
     return (
       <header>
-        <h1>Please login 🤡</h1>
+        <h1>Please login 
+          <span role="img" aria-label="clown"> 🤡 </span>
+          </h1>
       </header>
     )
   }
