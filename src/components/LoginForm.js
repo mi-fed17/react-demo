@@ -84,7 +84,7 @@ class LoginForm extends Component {
           <label htmlFor="password">Password</label>
           <input 
                   type="password"
-                  className="form-control is-invalid"
+                  className="form-control"
                   id="password"
                   name="password"
                   placeholder="Password"
