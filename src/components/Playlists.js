@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 function Playlists(props){
@@ -12,6 +13,11 @@ function Playlists(props){
     }
     return null;
   });
+}
+
+Playlists.propTypes = {
+  playlists: PropTypes.array,
+  searchTerm: PropTypes.string
 }
 
 export default Playlists;

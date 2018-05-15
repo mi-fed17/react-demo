@@ -1,4 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+
+Container.propTypes = {
+  children: PropTypes.element
+}
 
 function Container(props){
   return(
